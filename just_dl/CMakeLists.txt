@@ -1,10 +1,17 @@
 cmake_minimum_required(VERSION 3.20)
 
 add_library(just_dl
+    "include/just_dl/details/error.hpp"
+    "include/just_dl/details/interface.hpp"
+    "include/just_dl/details/make_error.hpp"
+    "include/just_dl/details/open_mode.hpp"
     "include/just_dl/just_dl.hpp"
-    "include/just_dl/platform/windows_dl.hpp"
-    "src/just_dl.cpp"
+
+    "src/details/error.cpp"
+    "src/details/make_error.cpp"
+    "src/platform/linux_dl.cpp"
     "src/platform/windows_dl.cpp"
+    "src/just_dl.cpp"
 )
 
 if(UNIX)
