@@ -1,7 +1,5 @@
 #ifdef __linux__
 
-#include <string>
-
 #include <dlfcn.h>  // TODO no extern "C"?
 
 #include "just_dl/details/interface.hpp"
@@ -41,19 +39,19 @@ namespace just_dl {
             }
         }
 
-        void* load_symbol(void* library_handle, const char* symbol_name, Error& err) {
+        void load_function(void* library_handle, const char* function_name, Function& function, Error& err) {
             dlerror();
 
-            void* symbol = dlsym(library_handle, symbol_name);
+            void* symbol = dlsym(library_handle, function_name);
 
             char* error = dlerror();
 
             if (error != nullptr) {
                 err = make_error(error);
-                return nullptr;
+                return;
             }
 
-            return symbol;
+            *reinterpret_cast<void**>(&function) = symbol;
         }
     }
 }

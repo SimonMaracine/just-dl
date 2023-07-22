@@ -14,8 +14,7 @@ int main() {
         return 1;
     }
 
-    Cosine cosine;
-    JUST_DL_SYMBOL_CAST(cosine, just_dl::load_symbol(handle, "cos", err));
+    Cosine cosine = reinterpret_cast<Cosine>(just_dl::load_function(handle, "cos", err));
 
     if (err) {
         std::cout << "Could not load function\n";

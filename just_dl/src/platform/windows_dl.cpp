@@ -1,5 +1,7 @@
 #ifdef _WIN32
 
+#include <string>
+
 #define NO_STRICT
 #include <windows.h>  // TODO no extern "C"?
 
