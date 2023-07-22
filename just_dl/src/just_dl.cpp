@@ -1,8 +1,8 @@
 #include <string_view>
 
 #include "just_dl/just_dl.hpp"
-#include "just_dl/details/open_mode.hpp"
 #include "just_dl/details/interface.hpp"
+#include "just_dl/details/open_mode.hpp"
 #include "just_dl/details/error.hpp"
 
 #if !defined(__linux__) && !defined(_WIN32)
@@ -18,7 +18,11 @@ namespace just_dl {
         return platform::close_library(library_handle, err);
     }
 
-    void* load_symbol(void* library_handle, std::string_view symbol_name, Error& err) {
-        return platform::load_symbol(library_handle, symbol_name.data(), err);
+    Function load_function(void* library_handle, std::string_view function_name, Error& err) {
+        Function function = nullptr;
+
+        platform::load_function(library_handle, function_name.data(), function, err);
+
+        return function;
     }
 }
