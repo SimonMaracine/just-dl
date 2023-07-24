@@ -2,8 +2,8 @@
 
 #include <dlfcn.h>  // TODO no extern "C"?
 
-#include "just_dl/details/interface.hpp"
 #include "just_dl/details/open_mode.hpp"
+#include "just_dl/details/function.hpp"
 #include "just_dl/details/error.hpp"
 #include "just_dl/details/make_error.hpp"
 
