@@ -6,6 +6,7 @@ add_library(just_dl
     "include/just_dl/details/function.hpp"
     "include/just_dl/details/interface.hpp"
     "include/just_dl/details/make_error.hpp"
+    "include/just_dl/details/version.hpp"
     "include/just_dl/just_dl.hpp"
 
     "src/details/error.cpp"

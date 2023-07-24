@@ -17,7 +17,7 @@ int main() {
     Cosine cosine = reinterpret_cast<Cosine>(just_dl::load_function(handle, "cos", err));
 
     if (err) {
-        std::cout << "Could not load function" << err.message() << '\n';
+        std::cout << "Could not load function: " << err.message() << '\n';
         return 1;
     }
 
@@ -26,7 +26,7 @@ int main() {
     just_dl::close_library(handle, err);
 
     if (err) {
-        std::cout << "Could not close math library" << err.message() << '\n';
+        std::cout << "Could not close math library: " << err.message() << '\n';
         return 1;
     }
 

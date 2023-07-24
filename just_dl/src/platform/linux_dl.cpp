@@ -1,6 +1,6 @@
 #ifdef __linux__
 
-#include <dlfcn.h>  // TODO no extern "C"?
+#include <dlfcn.h>
 
 #include "just_dl/details/flags.hpp"
 #include "just_dl/details/function.hpp"

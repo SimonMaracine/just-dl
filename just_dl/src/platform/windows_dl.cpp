@@ -4,7 +4,7 @@
 
 #define NO_STRICT
 #define WIN32_LEAN_AND_MEAN
-#include <Windows.h>  // TODO no extern "C"?
+#include <Windows.h>
 
 #include "just_dl/details/function.hpp"
 #include "just_dl/details/error.hpp"

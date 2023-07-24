@@ -4,6 +4,9 @@
 #include <string>
 
 namespace just_dl {
+    // Error container
+    // Every function that can fail, takes and Error object by reference
+    // You should check the error like this: `if (err) { ... }`
     class Error {
     public:
         Error() = default;
