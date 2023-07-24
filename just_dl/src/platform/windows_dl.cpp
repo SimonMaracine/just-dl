@@ -6,7 +6,6 @@
 #define WIN32_LEAN_AND_MEAN
 #include <Windows.h>  // TODO no extern "C"?
 
-#include "just_dl/details/open_mode.hpp"
 #include "just_dl/details/function.hpp"
 #include "just_dl/details/error.hpp"
 #include "just_dl/details/make_error.hpp"
@@ -37,7 +36,10 @@ namespace just_dl {
             return message;
         }
 
-        void* open_library(const char* library_name, OpenMode mode, Error& err) {
+        void* open_library(const char* library_name, unsigned int flags, Error& err) {
+            // Don't use any flags for now
+            static_cast<void>(flags);
+
             HMODULE handle = LoadLibrary(library_name);
 
             if (handle == nullptr) {

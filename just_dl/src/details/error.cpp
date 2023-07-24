@@ -16,6 +16,11 @@ namespace just_dl {
         msg.clear();
     }
 
-    Error::Error(const std::string& message)
-        : msg(message) {}
+    Error::Error(const std::string& message) {
+        if (message.empty()) {
+            msg = "Unknown error";
+        } else {
+            msg = message;
+        }
+    }
 }
