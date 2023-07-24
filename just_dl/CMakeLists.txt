@@ -2,10 +2,10 @@ cmake_minimum_required(VERSION 3.20)
 
 add_library(just_dl
     "include/just_dl/details/error.hpp"
+    "include/just_dl/details/flags.hpp"
     "include/just_dl/details/function.hpp"
     "include/just_dl/details/interface.hpp"
     "include/just_dl/details/make_error.hpp"
-    "include/just_dl/details/open_mode.hpp"
     "include/just_dl/just_dl.hpp"
 
     "src/details/error.cpp"

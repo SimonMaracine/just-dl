@@ -1,3 +1,5 @@
+#include <string>
+
 #include "just_dl/details/make_error.hpp"
 #include "just_dl/details/error.hpp"
 

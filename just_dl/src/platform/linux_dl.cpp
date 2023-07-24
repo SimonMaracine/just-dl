@@ -2,26 +2,24 @@
 
 #include <dlfcn.h>  // TODO no extern "C"?
 
-#include "just_dl/details/open_mode.hpp"
+#include "just_dl/details/flags.hpp"
 #include "just_dl/details/function.hpp"
 #include "just_dl/details/error.hpp"
 #include "just_dl/details/make_error.hpp"
 
 namespace just_dl {
     namespace platform {
-        void* open_library(const char* library_name, OpenMode mode, Error& err) {
+        static void clear_error() {
             dlerror();
+        }
+
+        void* open_library(const char* library_name, unsigned int flags, Error& err) {
+            clear_error();
 
             void* handle = nullptr;
+            const int mode = flags & LinuxLazyLoading ? RTLD_LAZY : RTLD_NOW;
 
-            switch (mode) {
-                case OpenMode::Lazy:
-                    handle = dlopen(library_name, RTLD_LAZY);
-                    break;
-                case OpenMode::Immediate:
-                    handle = dlopen(library_name, RTLD_NOW);
-                    break;
-            }
+            handle = dlopen(library_name, mode);
 
             if (handle == nullptr) {
                 err = make_error(dlerror());
@@ -32,7 +30,7 @@ namespace just_dl {
         }
 
         void close_library(void* library_handle, Error& err) {
-            dlerror();
+            clear_error();
 
             if (dlclose(library_handle) != 0) {
                 err = make_error(dlerror());
@@ -40,7 +38,7 @@ namespace just_dl {
         }
 
         void load_function(void* library_handle, const char* function_name, Function& function, Error& err) {
-            dlerror();
+            clear_error();
 
             void* symbol = dlsym(library_handle, function_name);
 

@@ -7,7 +7,7 @@ using Cosine = double(*)(double);
 int main() {
     just_dl::Error err;
 
-    void* handle = just_dl::open_library("libm.so.6", just_dl::OpenMode::Lazy, err);
+    void* handle = just_dl::open_library("libm.so.6", 0, err);
 
     if (err) {
         std::cout << "Could not open math library: " << err.message() << '\n';

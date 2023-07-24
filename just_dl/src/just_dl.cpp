@@ -2,7 +2,7 @@
 
 #include "just_dl/just_dl.hpp"
 #include "just_dl/details/interface.hpp"
-#include "just_dl/details/open_mode.hpp"
+#include "just_dl/details/function.hpp"
 #include "just_dl/details/error.hpp"
 
 #if !defined(__linux__) && !defined(_WIN32)
@@ -10,8 +10,8 @@
 #endif
 
 namespace just_dl {
-    void* open_library(std::string_view library_name, OpenMode mode, Error& err) {
-        return platform::open_library(library_name.data(), mode, err);
+    void* open_library(std::string_view library_name, unsigned int flags, Error& err) {
+        return platform::open_library(library_name.data(), flags, err);
     }
 
     void close_library(void* library_handle, Error& err) {
