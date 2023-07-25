@@ -15,7 +15,7 @@
 namespace just_dl {
     // Open the specified library and return a handle to it
     // If the function fails, the handle returned is null and the error is set
-    // Flags are most likely platform-specific; see the flags header file
+    // Flags are most likely platform-specific; see flags.hpp header file
     void* open_library(std::string_view library_name, unsigned int flags, Error& err);
 
     // Close the library sepcified by the handle
