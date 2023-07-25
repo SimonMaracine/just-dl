@@ -26,7 +26,7 @@ namespace just_dl {
             );
 
             if (result == 0) {
-                return {};
+                return "Error code: " + std::to_string(code);
             }
 
             std::string message {buffer};
