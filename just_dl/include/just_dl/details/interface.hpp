@@ -5,7 +5,7 @@
 
 namespace just_dl {
     namespace platform {
-        // Interface used by both Lnux and Windows implementations; this is different from the API
+        // Interface used by both Linux and Windows implementations; this is different from the API
         // of this little library
         void* open_library(const char* library_name, unsigned int flags, Error& err);
         void close_library(void* library_handle, Error& err);
