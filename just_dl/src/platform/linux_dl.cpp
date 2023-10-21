@@ -5,7 +5,6 @@
 #include "just_dl/details/flags.hpp"
 #include "just_dl/details/function.hpp"
 #include "just_dl/details/error.hpp"
-#include "just_dl/details/make_error.hpp"
 
 namespace just_dl {
     namespace platform {
@@ -22,7 +21,7 @@ namespace just_dl {
             handle = dlopen(library_name, mode);
 
             if (handle == nullptr) {
-                err = make_error(dlerror());
+                err = Error(dlerror());
                 return nullptr;
             }
 
@@ -33,7 +32,7 @@ namespace just_dl {
             clear_error();
 
             if (dlclose(library_handle) != 0) {
-                err = make_error(dlerror());
+                err = Error(dlerror());
             }
         }
 
@@ -45,7 +44,7 @@ namespace just_dl {
             char* error = dlerror();
 
             if (error != nullptr) {
-                err = make_error(error);
+                err = Error(error);
                 return;
             }
 

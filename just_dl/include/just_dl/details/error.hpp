@@ -12,6 +12,8 @@ namespace just_dl {
         Error() = default;
         ~Error() = default;
 
+        Error(const std::string& message);
+
         Error(const Error&) = default;
         Error& operator=(const Error&) = default;
         Error(Error&&) = default;
@@ -21,11 +23,7 @@ namespace just_dl {
         operator bool() const;
 
         void clear();
-    private:
-        Error(const std::string& message);
 
         std::string msg;
-
-        friend Error make_error(const std::string& message);
     };
 }

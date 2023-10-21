@@ -8,7 +8,6 @@
 
 #include "just_dl/details/function.hpp"
 #include "just_dl/details/error.hpp"
-#include "just_dl/details/make_error.hpp"
 
 namespace just_dl {
     namespace platform {
@@ -43,7 +42,7 @@ namespace just_dl {
             HMODULE handle = LoadLibrary(library_name);
 
             if (handle == nullptr) {
-                err = make_error(get_error_message(GetLastError()));
+                err = Error(get_error_message(GetLastError()));
                 return nullptr;
             }
 
@@ -52,7 +51,7 @@ namespace just_dl {
 
         void close_library(void* library_handle, Error& err) {
             if (!FreeLibrary(library_handle)) {
-                err = make_error(get_error_message(GetLastError()));
+                err = Error(get_error_message(GetLastError()));
             }
         }
 
@@ -60,7 +59,7 @@ namespace just_dl {
             FARPROC symbol = GetProcAddress(library_handle, function_name);
 
             if (symbol == nullptr) {
-                err = make_error(get_error_message(GetLastError()));
+                err = Error(get_error_message(GetLastError()));
                 return;
             }
 
