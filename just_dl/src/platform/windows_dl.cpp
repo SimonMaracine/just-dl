@@ -12,14 +12,14 @@
 namespace just_dl {
     namespace platform {
         static std::string get_error_message(DWORD code) {
-            LPTSTR buffer = nullptr;
+            LPSTR buffer = nullptr;
 
             const DWORD result = FormatMessage(
                 FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS,
                 nullptr,
                 code,
                 MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
-                static_cast<LPTSTR>(&buffer),
+                reinterpret_cast<LPSTR>(&buffer),
                 0,
                 nullptr
             );
@@ -28,7 +28,7 @@ namespace just_dl {
                 return "Error code: " + std::to_string(code);
             }
 
-            std::string message {buffer};
+            const std::string message {buffer};
 
             LocalFree(buffer);
 

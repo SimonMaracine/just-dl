@@ -2,7 +2,7 @@
 
 ## Load functions from shared libraries in a cross-platform way, on Linux and Windows
 
-I built this library for myself. It should work for `C++14` and up. I tested it on `GCC 13` and `MSVC 19.34`.
+I built this library for myself. It requires at least `C++17`. I tested it on `GCC 13` and `MSVC 19.36`.
 
 If you want to use this library and need a specific flag in either `dlopen`, or `LoadLibrary`,
 that is not present in this library, open up an issue and I will try to implement it. If you want

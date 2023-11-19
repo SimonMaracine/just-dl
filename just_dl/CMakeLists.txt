@@ -23,3 +23,6 @@ else()
 endif()
 
 target_include_directories(just_dl PUBLIC "include")
+
+target_compile_features(just_dl PRIVATE cxx_std_17)
+set_target_properties(just_dl PROPERTIES CXX_EXTENSIONS OFF)
