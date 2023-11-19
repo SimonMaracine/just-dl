@@ -3,7 +3,7 @@
 // Include this header to gain access to the library API
 // Don't include other headers
 
-#include <string_view>
+#include <string>
 
 #include "just_dl/details/function.hpp"
 #include "just_dl/details/error.hpp"
@@ -16,7 +16,7 @@ namespace just_dl {
     // Open the specified library and return a handle to it
     // If the function fails, the handle returned is null and the error is set
     // Flags are most likely platform-specific; see flags.hpp header file
-    void* open_library(std::string_view library_name, unsigned int flags, Error& err);
+    void* open_library(const std::string& library_name, unsigned int flags, Error& err);
 
     // Close the library sepcified by the handle
     // This operation can, of course, fail
@@ -27,5 +27,5 @@ namespace just_dl {
     // To be called, the result MUST be reinterpret_cast'ed to the correct function pointer,
     // otherwise undefined behavior kicks in
     // On Linux, trying to retrieve any symbols other than functions is undefined behavior
-    Function load_function(void* library_handle, std::string_view function_name, Error& err);
+    Function load_function(void* library_handle, const std::string& function_name, Error& err);
 }

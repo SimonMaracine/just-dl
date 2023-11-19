@@ -19,7 +19,7 @@ namespace just_dl {
                 nullptr,
                 code,
                 MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
-                (LPTSTR) &buffer,
+                static_cast<LPTSTR>(&buffer),
                 0,
                 nullptr
             );

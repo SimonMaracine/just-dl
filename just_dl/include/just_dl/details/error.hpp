@@ -1,6 +1,5 @@
 #pragma once
 
-#include <string_view>
 #include <string>
 
 namespace just_dl {
@@ -10,20 +9,20 @@ namespace just_dl {
     class Error {
     public:
         Error() = default;
-        ~Error() = default;
-
         Error(const std::string& message);
+
+        ~Error() = default;
 
         Error(const Error&) = default;
         Error& operator=(const Error&) = default;
         Error(Error&&) = default;
         Error& operator=(Error&&) = default;
 
-        std::string_view message() const;
+        const std::string& message() const;
         operator bool() const;
 
         void clear();
-
+    private:
         std::string msg;
     };
 }

@@ -1,10 +1,9 @@
-#include <string_view>
 #include <string>
 
 #include "just_dl/details/error.hpp"
 
 namespace just_dl {
-    std::string_view Error::message() const {
+    const std::string& Error::message() const {
         return msg;
     }
 
