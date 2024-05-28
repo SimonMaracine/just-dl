@@ -17,7 +17,7 @@ add_library(just_dl
 if(UNIX)
     target_compile_options(just_dl PRIVATE "-Wall" "-Wextra" "-Wpedantic" "-Wconversion")
 elseif(MSVC)
-    target_compile_options(just_dl PRIVATE "/W3")
+    target_compile_options(just_dl PRIVATE "/W4")
 else()
     message(WARNING "Warnings are not enabled")
 endif()
