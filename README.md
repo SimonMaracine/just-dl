@@ -2,7 +2,7 @@
 
 ## Load functions from shared libraries in a cross-platform way, on Linux and Windows
 
-I built this library for myself. It requires at least `C++17`. I tested it on `GCC 13` and `MSVC 19.36`.
+I built this library for myself. It requires at least `C++17`. I tested it on `GCC 13.2` and `MSVC 19.36`.
 
 If you want to use this library and need a specific flag in either `dlopen`, or `LoadLibrary`,
 that is not present in this library, open up an issue and I will try to implement it. If you want
@@ -47,16 +47,16 @@ using Cosine = double(*)(double);
 int main() {
     just_dl::Error err;
 
-    void* handle = just_dl::open_library("libm.so.6", 0, err);
+    void* handle {just_dl::open_library("libm.so.6", 0, err)};
 
     if (err) {
         std::cout << "Could not open math library: " << err.message() << '\n';
         return 1;
     }
 
-    Cosine cosine = reinterpret_cast<Cosine>(
+    Cosine cosine {reinterpret_cast<Cosine>(
         just_dl::load_function(handle, "cos", err)
-    );
+    )};
 
     if (err) {
         std::cout << "Could not load function: " << err.message() << '\n';

@@ -9,14 +9,7 @@ namespace just_dl {
     class Error {
     public:
         Error() = default;
-        Error(const std::string& message);
-
-        ~Error() = default;
-
-        Error(const Error&) = default;
-        Error& operator=(const Error&) = default;
-        Error(Error&&) = default;
-        Error& operator=(Error&&) = default;
+        explicit Error(const std::string& message);
 
         const std::string& message() const;
         operator bool() const;

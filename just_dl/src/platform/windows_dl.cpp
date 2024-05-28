@@ -12,9 +12,9 @@
 namespace just_dl {
     namespace platform {
         static std::string get_error_message(DWORD code) {
-            LPSTR buffer = nullptr;
+            LPSTR buffer {nullptr};
 
-            const DWORD result = FormatMessage(
+            const DWORD result {FormatMessage(
                 FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS,
                 nullptr,
                 code,
@@ -22,7 +22,7 @@ namespace just_dl {
                 reinterpret_cast<LPSTR>(&buffer),
                 0,
                 nullptr
-            );
+            )};
 
             if (result == 0) {
                 return "Error code: " + std::to_string(code);
@@ -39,7 +39,7 @@ namespace just_dl {
             // Don't use any flags for now
             static_cast<void>(flags);
 
-            HMODULE handle = LoadLibrary(library_name);
+            HMODULE handle {LoadLibrary(library_name)};
 
             if (handle == nullptr) {
                 err = Error(get_error_message(GetLastError()));
@@ -56,7 +56,7 @@ namespace just_dl {
         }
 
         void load_function(void* library_handle, const char* function_name, Function& function, Error& err) {
-            FARPROC symbol = GetProcAddress(library_handle, function_name);
+            FARPROC symbol {GetProcAddress(library_handle, function_name)};
 
             if (symbol == nullptr) {
                 err = Error(get_error_message(GetLastError()));

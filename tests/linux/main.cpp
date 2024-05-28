@@ -7,14 +7,14 @@ using Cosine = double(*)(double);
 int main() {
     just_dl::Error err;
 
-    void* handle = just_dl::open_library("libm.so.6", 0, err);
+    void* handle {just_dl::open_library("libm.so.6", 0, err)};
 
     if (err) {
         std::cout << "Could not open math library: " << err.message() << '\n';
         return 1;
     }
 
-    Cosine cosine = reinterpret_cast<Cosine>(just_dl::load_function(handle, "cos", err));
+    Cosine cosine {reinterpret_cast<Cosine>(just_dl::load_function(handle, "cos", err))};
 
     if (err) {
         std::cout << "Could not load function: " << err.message() << '\n';

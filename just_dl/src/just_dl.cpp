@@ -1,8 +1,5 @@
-#include <string>
-
 #include "just_dl/just_dl.hpp"
-#include "just_dl/details/function.hpp"
-#include "just_dl/details/error.hpp"
+
 #include "just_dl/details/interface.hpp"
 
 #if !defined(__linux__) && !defined(_WIN32)
@@ -15,11 +12,11 @@ namespace just_dl {
     }
 
     void close_library(void* library_handle, Error& err) {
-        return platform::close_library(library_handle, err);
+        platform::close_library(library_handle, err);
     }
 
     Function load_function(void* library_handle, const std::string& function_name, Error& err) {
-        Function function = nullptr;
+        Function function {nullptr};
 
         platform::load_function(library_handle, function_name.c_str(), function, err);
 
