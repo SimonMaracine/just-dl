@@ -13,5 +13,5 @@ endif()
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
-message(STATUS "just_dl: Building shared library: ${BUILD_SHARED_LIBS}")
 message(STATUS "just_dl: Building tests: ${JUST_DL_BUILD_TESTS}")
+message(STATUS "just_dl: Building shared library: ${BUILD_SHARED_LIBS}")
