@@ -11,10 +11,12 @@ any other suggestions, feel free to open an issue.
 
 Check the header files for documentation and check out `tests/**/main.cpp` for some examples.
 
+## Usage
+
 To use this library, include it as a submodule:
 
 ```text
-git submodule add https://github.com/SimonMaracine/just-dl.git <path/to/submodule/folder>
+git submodule add -b stable -- https://github.com/SimonMaracine/just-dl.git <path/to/submodule/folder>
 ```
 
 Then write this in CMakeLists.txt:

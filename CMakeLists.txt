@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.20)
 
+project("just-dl" LANGUAGES CXX)
+
 option(JUST_DL_BUILD_TESTS "Build tests alongside the library" OFF)
 option(BUILD_SHARED_LIBS "Build the library as static or dynamic" OFF)
-
-project("just-dl" LANGUAGES CXX)
 
 add_subdirectory(just_dl)
 
